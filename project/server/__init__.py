@@ -68,3 +68,12 @@ def test(coverage):
             COV.erase()
         return 0
     return 1
+
+
+
+# ============> HW 1: Adding a new page to display all item in database
+from flask import render_template
+@app.route('/users')
+def user_page():
+    items = User.query.all()
+    return render_template('users.html', items=items)
