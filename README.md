@@ -497,3 +497,27 @@ The boolean value is: false
 
 Now you understand handling JSON objects.
 
+
+
+## Deploy to Heroku
+
+
+
+
+
+```bash
+(env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> heroku git:remote -a cs501-hw1-heroku
+ »   Warning: heroku update available from 7.53.0 to 7.59.0.
+set git remote heroku to https://git.heroku.com/cs501-hw1-heroku.git
+```
+
+
+
+Push to Heroku master
+
+```bash
+(env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> heroku git:remote -a cs501-hw1-heroku
+ »   Warning: heroku update available from 7.53.0 to 7.59.0.
+set git remote heroku to https://git.heroku.com/cs501-hw1-heroku.git
+```
+
