@@ -632,7 +632,7 @@ git commit -am "push to heroku"	# Make a commit
 [main 84edfd0] push to heroku
  46 files changed, 8210 insertions(+), 37 deletions(-)
 git push						# Push to github master branch
-git push heroku master			# deploy to heroku master branch
+    git push heroku master			# deploy to heroku master branch
 git remote -v
 ```
 
