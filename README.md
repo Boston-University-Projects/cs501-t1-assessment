@@ -594,14 +594,37 @@ To https://git.heroku.com/serene-caverns-82714.git
 
 
 
+### Some debugging
+
+Setting up a buildpack on an application (something like, telling Heroku, what language you are using, or database), more details here, https://devcenter.heroku.com/articles/buildpacks
+
+```powershell
+(env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> heroku buildpacks
+ »   Warning: heroku update available from 7.53.0 to 7.59.0.
+cs501-hw1-heroku has no Buildpack URL set.
+```
+
+Or you can specify it during app creation:
+
+```powershell
+heroku create myapp --buildpack heroku/python
+```
+
+
+
+
+
 ```bash
 git add .						# add all change
 git commit -am "push to heroku"	# Make a commit
 [main 84edfd0] push to heroku
  46 files changed, 8210 insertions(+), 37 deletions(-)
 git push						# Push to github master branch
-git push heroku master			# Push to heroku master branch
+git push heroku master			# deploy to heroku master branch
+git remote -v
 ```
+
+Check out this cheatsheet for more information about Git command, https://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf
 
 
 
