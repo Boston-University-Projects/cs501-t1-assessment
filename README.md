@@ -501,14 +501,106 @@ Now you understand handling JSON objects.
 
 ## Deploy to Heroku
 
+- Download Heroku 
+
+Just check out this website, https://devcenter.heroku.com/articles/getting-started-with-python#set-up
+
+Login to Heroku
+
+```bash
+heroku login
+```
+
+cd to your application directory
+
+```bash
+cd python-getting-started
+```
+
+Create the Heroku app
+
+```bash
+heroku create
+Creating app... done, ⬢ serene-caverns-82714
+https://serene-caverns-82714.herokuapp.com/ | https://git.heroku.com/serene-caverns-82714.git
+# In default, heroku will generate a random name for you, but you can use the following code to customize it, and it must be unique
+# heroku creat cs501-hw1-heroku
+```
+
+Deploy the Heroku app
+
+```bash
+git push heroku main
+Counting objects: 407, done.
+Delta compression using up to 8 threads.
+Compressing objects: 100% (182/182), done.
+Writing objects: 100% (407/407), 68.65 KiB | 68.65 MiB/s, done.
+Total 407 (delta 199), reused 407 (delta 199)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Building on the Heroku-20 stack
+remote: -----> Determining which buildpack to use for this app
+remote: -----> Python app detected
+remote: -----> Using Python version specified in runtime.txt
+remote: -----> Installing python-3.9.6
+remote: -----> Installing pip 20.2.4, setuptools 47.1.1 and wheel 0.36.2
+remote:        Collecting django
+remote:          Downloading Django-3.2-py3-none-any.whl (7.9 MB)
+remote:        Collecting gunicorn
+remote:          Downloading gunicorn-20.1.0.tar.gz (370 kB)
+remote:        Collecting django-heroku
+remote:          Downloading django_heroku-0.3.1-py2.py3-none-any.whl (6.2 kB)
+remote:        Collecting asgiref<4,>=3.3.2
+remote:          Downloading asgiref-3.3.2-py3-none-any.whl (22 kB)
+remote:        Collecting pytz
+remote:          Downloading pytz-2021.1-py2.py3-none-any.whl (510 kB)
+remote:        Collecting sqlparse>=0.2.2
+remote:          Downloading sqlparse-0.4.1-py3-none-any.whl (42 kB)
+remote:        Collecting psycopg2
+remote:          Downloading psycopg2-2.8.6.tar.gz (383 kB)
+remote:        Collecting whitenoise
+remote:          Downloading whitenoise-5.2.0-py2.py3-none-any.whl (19 kB)
+remote:        Collecting dj-database-url>=0.5.0
+remote:          Downloading dj_database_url-0.5.0-py2.py3-none-any.whl (5.5 kB)
+remote:        Building wheels for collected packages: gunicorn, psycopg2
+remote:          Building wheel for gunicorn (setup.py): started
+remote:          Building wheel for gunicorn (setup.py): finished with status 'done'
+remote:          Created wheel for gunicorn: filename=gunicorn-20.1.0-py3-none-any.whl size=78918 sha256=31cf6259d9f936d5565df167c93a9901bdd93d7daaf7ef915631f720750126bf
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-orcrzfks/wheels/ee/ca/72/3e9be4033d3993d4d78e2f4accdfcfff6c690921fef5ea0d57
+remote:          Building wheel for psycopg2 (setup.py): started
+remote:          Building wheel for psycopg2 (setup.py): finished with status 'done'
+remote:          Created wheel for psycopg2: filename=psycopg2-2.8.6-cp39-cp39-linux_x86_64.whl size=523834 sha256=5adec4cab8382243abb5e1c4638481479baa8b13b94caa392d06d92e98b51d2d
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-orcrzfks/wheels/a2/07/10/a9a82e72d50feb8d646acde6a88000bbf2ca0f82e41aea438a
+remote:        Successfully built gunicorn psycopg2
+remote:        Installing collected packages: asgiref, pytz, sqlparse, django, gunicorn, psycopg2, whitenoise, dj-database-url, django-heroku
+remote:        Successfully installed asgiref-3.3.2 dj-database-url-0.5.0 django-3.2 django-heroku-0.3.1 gunicorn-20.1.0 psycopg2-2.8.6 pytz-2021.1 sqlparse-0.4.1 whitenoise-5.2.0
+remote: -----> $ python manage.py collectstatic --noinput
+remote:        129 static files copied to '/tmp/build_9d3818e3/staticfiles', 393 post-processed.
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote: -----> Compressing...
+remote:        Done: 60.7M
+remote: -----> Launching...
+remote:        Released v5
+remote:        https://serene-caverns-82714.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/serene-caverns-82714.git
+ * [new branch]      revert-to-requirements -> main
+```
+
 
 
 
 
 ```bash
-(env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> heroku git:remote -a cs501-hw1-heroku
- »   Warning: heroku update available from 7.53.0 to 7.59.0.
-set git remote heroku to https://git.heroku.com/cs501-hw1-heroku.git
+git add .						# add all change
+git commit -am "push to heroku"	# Make a commit
+[main 84edfd0] push to heroku
+ 46 files changed, 8210 insertions(+), 37 deletions(-)
+git push						# Push to github master branch
+git push heroku master			# Push to heroku master branch
 ```
 
 
