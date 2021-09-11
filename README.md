@@ -524,7 +524,7 @@ heroku create
 Creating app... done, ⬢ serene-caverns-82714
 https://serene-caverns-82714.herokuapp.com/ | https://git.heroku.com/serene-caverns-82714.git
 # In default, heroku will generate a random name for you, but you can use the following code to customize it, and it must be unique
-# heroku creat cs501-hw1-heroku
+# heroku create cs501-hw1-heroku
 ```
 
 Deploy the Heroku app
@@ -588,6 +588,18 @@ remote:
 remote: Verifying deploy... done.
 To https://git.heroku.com/serene-caverns-82714.git
  * [new branch]      revert-to-requirements -> main
+```
+
+
+
+### Q&A
+
+1. How to add a buildpack for your app, more details here， https://devcenter.heroku.com/articles/python-support
+
+Adding python buildpack:
+
+```bash
+heroku buildpacks:add heroku/python
 ```
 
 
