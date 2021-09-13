@@ -512,135 +512,48 @@ Login to Heroku
 heroku login
 ```
 
-cd to your application directory
-
-```bash
-cd python-getting-started
-```
-
-Create the Heroku app
-
-```bash
-heroku create
-Creating app... done, ⬢ serene-caverns-82714
-https://serene-caverns-82714.herokuapp.com/ | https://git.heroku.com/serene-caverns-82714.git
-# In default, heroku will generate a random name for you, but you can use the following code to customize it, and it must be unique
-# heroku create cs501-hw1-heroku
-```
-
-Deploy the Heroku app
-
-```bash
-git push heroku main
-Counting objects: 407, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (182/182), done.
-Writing objects: 100% (407/407), 68.65 KiB | 68.65 MiB/s, done.
-Total 407 (delta 199), reused 407 (delta 199)
-remote: Compressing source files... done.
-remote: Building source:
-remote:
-remote: -----> Building on the Heroku-20 stack
-remote: -----> Determining which buildpack to use for this app
-remote: -----> Python app detected
-remote: -----> Using Python version specified in runtime.txt
-remote: -----> Installing python-3.9.6
-remote: -----> Installing pip 20.2.4, setuptools 47.1.1 and wheel 0.36.2
-remote:        Collecting django
-remote:          Downloading Django-3.2-py3-none-any.whl (7.9 MB)
-remote:        Collecting gunicorn
-remote:          Downloading gunicorn-20.1.0.tar.gz (370 kB)
-remote:        Collecting django-heroku
-remote:          Downloading django_heroku-0.3.1-py2.py3-none-any.whl (6.2 kB)
-remote:        Collecting asgiref<4,>=3.3.2
-remote:          Downloading asgiref-3.3.2-py3-none-any.whl (22 kB)
-remote:        Collecting pytz
-remote:          Downloading pytz-2021.1-py2.py3-none-any.whl (510 kB)
-remote:        Collecting sqlparse>=0.2.2
-remote:          Downloading sqlparse-0.4.1-py3-none-any.whl (42 kB)
-remote:        Collecting psycopg2
-remote:          Downloading psycopg2-2.8.6.tar.gz (383 kB)
-remote:        Collecting whitenoise
-remote:          Downloading whitenoise-5.2.0-py2.py3-none-any.whl (19 kB)
-remote:        Collecting dj-database-url>=0.5.0
-remote:          Downloading dj_database_url-0.5.0-py2.py3-none-any.whl (5.5 kB)
-remote:        Building wheels for collected packages: gunicorn, psycopg2
-remote:          Building wheel for gunicorn (setup.py): started
-remote:          Building wheel for gunicorn (setup.py): finished with status 'done'
-remote:          Created wheel for gunicorn: filename=gunicorn-20.1.0-py3-none-any.whl size=78918 sha256=31cf6259d9f936d5565df167c93a9901bdd93d7daaf7ef915631f720750126bf
-remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-orcrzfks/wheels/ee/ca/72/3e9be4033d3993d4d78e2f4accdfcfff6c690921fef5ea0d57
-remote:          Building wheel for psycopg2 (setup.py): started
-remote:          Building wheel for psycopg2 (setup.py): finished with status 'done'
-remote:          Created wheel for psycopg2: filename=psycopg2-2.8.6-cp39-cp39-linux_x86_64.whl size=523834 sha256=5adec4cab8382243abb5e1c4638481479baa8b13b94caa392d06d92e98b51d2d
-remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-orcrzfks/wheels/a2/07/10/a9a82e72d50feb8d646acde6a88000bbf2ca0f82e41aea438a
-remote:        Successfully built gunicorn psycopg2
-remote:        Installing collected packages: asgiref, pytz, sqlparse, django, gunicorn, psycopg2, whitenoise, dj-database-url, django-heroku
-remote:        Successfully installed asgiref-3.3.2 dj-database-url-0.5.0 django-3.2 django-heroku-0.3.1 gunicorn-20.1.0 psycopg2-2.8.6 pytz-2021.1 sqlparse-0.4.1 whitenoise-5.2.0
-remote: -----> $ python manage.py collectstatic --noinput
-remote:        129 static files copied to '/tmp/build_9d3818e3/staticfiles', 393 post-processed.
-remote: -----> Discovering process types
-remote:        Procfile declares types -> web
-remote: -----> Compressing...
-remote:        Done: 60.7M
-remote: -----> Launching...
-remote:        Released v5
-remote:        https://serene-caverns-82714.herokuapp.com/ deployed to Heroku
-remote:
-remote: Verifying deploy... done.
-To https://git.heroku.com/serene-caverns-82714.git
- * [new branch]      revert-to-requirements -> main
-```
-
 
 
 ### Q&A
 
-1. How to add a buildpack for your app, more details here， https://devcenter.heroku.com/articles/python-support
 
-Adding python buildpack:
+
+### Debug:
+
+- Related to buildpack, Profile
+
+If you see any error like this:
 
 ```bash
-heroku buildpacks:add heroku/python
-```
-
-
-
-
-
-### Some debugging
-
-
-
-- Error 1:
-
-```powershell
-(env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> git push heroku master
-error: src refspec master does not match any
-error: failed to push some refs to 'https://git.heroku.com/cs501-hw1-heroku.git'
-```
-
-
-
-Solution: (There is more details about the HOW, https://stackoverflow.com/questions/26595874/i-want-make-push-and-get-error-src-refspec-master-does-not-match-any, and here is the WHY, https://stackoverflow.com/questions/8196544/what-are-the-git-concepts-of-head-master-origin/8196578#8196578)
-
-```powershell
 (env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> git push heroku HEAD:master
 Enumerating objects: 1694, done.
 Counting objects: 100% (1694/1694), done.
 Delta compression using up to 12 threads
 Compressing objects: 100% (1615/1615), done.
-Writing objects: 100% (1694/1694), 6.80 MiB | 1.12 MiB/s, done.
-Total 1694 (delta 157), reused 47 (delta 14), pack-reused 0
+Writing objects: 100% (1694/1694), 6.80 MiB | 1.33 MiB/s, done.
+Total 1694 (delta 154), reused 47 (delta 14), pack-reused 0
 remote: Compressing source files... done.
 remote: Building source:
 remote: 
 remote: -----> Building on the Heroku-20 stack
-remote: -----> Determining which buildpack to use for this app
-remote:  !     No default language could be detected for this app.
-remote:                         HINT: This occurs when Heroku cannot detect the buildpack to use for this application automatically.
-remote:                         See https://devcenter.heroku.com/articles/buildpacks
-remote:
+remote: -----> Using buildpack: heroku/python
+remote: -----> App not compatible with buildpack: https://buildpack-registry.s3.amazonaws.com/buildpacks/heroku/python.tgz
+remote:        More info: https://devcenter.heroku.com/articles/buildpacks#detection-failure
+remote: 
 remote:  !     Push failed
+remote:  !
+remote:  ! ## Warning - The same version of this code has already been built: ee9f2efce966bc35567c2bbcd1396545657403b8
+remote:  !
+remote:  ! We have detected that you have triggered a build from source code with version ee9f2efce966bc35567c2bbcd1396545657403b8
+remote:  ! at least twice. One common cause of this behavior is attempting to deploy code from a different branch.
+remote:  !
+remote:  ! If you are developing on a branch and deploying via git you must run:
+remote:  !
+remote:  !     git push heroku <branchname>:main
+remote:  !
+remote:  ! This article goes into details on the behavior:
+remote:  !   https://devcenter.heroku.com/articles/duplicate-build-version
+remote:
 remote: Verifying deploy...
 remote: 
 remote: !       Push rejected to cs501-hw1-heroku.
@@ -650,6 +563,54 @@ To https://git.heroku.com/cs501-hw1-heroku.git
 error: failed to push some refs to 'https://git.heroku.com/cs501-hw1-heroku.git'
 ```
 
+
+
+it means Heroku cannot detect your buildpack, because you don’t have one of those three files:
+
+![image-20210912215109405](../FlaskMarket/img/image-20210912215109405.png)
+
+
+
+The way to solve this is follow:
+
+- Create a requirements.txt
+
+```bash
+cd .\FlaskMarket
+# List your current dependency
+pip freeze > requirements.txt
+# create runtime.txt, with python version 3.9.7
+echo "python-3.9.7" > runtime.txt
+# Create a Procfile, and command to run
+echo "web: gunicorn project.manage:app" > Procfile
+echo "heroku ps:scale web=1" >> Procfile
+# Push to Github
+git add .
+git commit -m "Make a clean"
+git push
+# Update to Heroku
+git push heroku main
+heroku open
+```
+
+
+
+Additional Step
+
+```bash
+echo "web: python run.py runserver 0.0.0.0:5000" > Procfile.windows
+# Test locally
+heroku local web -f Procfile.windows
+```
+
+
+
+Note: How to add a buildpack for your app, more details here， https://devcenter.heroku.com/articles/python-support
+
+
+
+Solution: (There is more details about the HOW, https://stackoverflow.com/questions/26595874/i-want-make-push-and-get-error-src-refspec-master-does-not-match-any, and here is the WHY, https://stackoverflow.com/questions/8196544/what-are-the-git-concepts-of-head-master-origin/8196578#8196578)
+
 To understand the why, you need to understand this syntax
 
 ```bash
@@ -658,47 +619,18 @@ git push <remote> <local ref>:<remote branch>
 
 
 
-
-
-
-
-Setting up a buildpack on an application (something like, telling Heroku, what language you are using, or database), more details here, https://devcenter.heroku.com/articles/buildpacks
-
-```powershell
-> heroku buildpacks
- »   Warning: heroku update available from 7.53.0 to 7.59.0.
-cs501-hw1-heroku has no Buildpack URL set.
-```
-
-Or you can specify it during app creation:
-
-```powershell
-heroku create myapp --buildpack heroku/python
-```
-
-
-
-
-
-```bash
-git add .						# add all change
-git commit -am "push to heroku"	# Make a commit
-[main 84edfd0] push to heroku
- 46 files changed, 8210 insertions(+), 37 deletions(-)
-git push						# Push to github master branch
-    git push heroku master			# deploy to heroku master branch
-git remote -v
-```
-
 Check out this cheatsheet for more information about Git command, https://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf
 
 
 
-Push to Heroku master
+## Reference
 
-```bash
-(env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> heroku git:remote -a cs501-hw1-heroku
- »   Warning: heroku update available from 7.53.0 to 7.59.0.
-set git remote heroku to https://git.heroku.com/cs501-hw1-heroku.git
-```
+Check these two document, and read and understand all of them, 
+
+- [Getting Started on Heroku with Python](https://devcenter.heroku.com/articles/deploying-python)
+- [Deploying Python and Django Apps on Heroku](https://devcenter.heroku.com/articles/deploying-python)
+
+
+
+
 
