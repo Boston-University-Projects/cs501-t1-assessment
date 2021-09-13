@@ -636,6 +636,20 @@ Check out this cheatsheet for more information about Git command, https://res.cl
 
 
 
+## Summary:
+
+```bash
+heroku login
+
+heroku create cs501-hw1-heroku
+
+heroku ps:scale web=1	# One dyno/worker
+
+git push heroku main
+```
+
+
+
 ## Reference
 
 Check these two document, and read and understand all of them, 
