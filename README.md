@@ -31,6 +31,7 @@ $ export APP_SETTINGS="project.server.config.DevelopmentConfig"
 For Windows(powershell):
 ```bash
 $env:FLASK_ENV = "development"
+# $env:FLASK_ENV = "production"
 $env:FLASK_APP = "project.server"
 flask db init
 flask db migrate
@@ -608,10 +609,63 @@ heroku buildpacks:add heroku/python
 
 ### Some debugging
 
+
+
+- Error 1:
+
+```powershell
+(env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> git push heroku master
+error: src refspec master does not match any
+error: failed to push some refs to 'https://git.heroku.com/cs501-hw1-heroku.git'
+```
+
+
+
+Solution: (There is more details about the HOW, https://stackoverflow.com/questions/26595874/i-want-make-push-and-get-error-src-refspec-master-does-not-match-any, and here is the WHY, https://stackoverflow.com/questions/8196544/what-are-the-git-concepts-of-head-master-origin/8196578#8196578)
+
+```powershell
+(env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> git push heroku HEAD:master
+Enumerating objects: 1694, done.
+Counting objects: 100% (1694/1694), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (1615/1615), done.
+Writing objects: 100% (1694/1694), 6.80 MiB | 1.12 MiB/s, done.
+Total 1694 (delta 157), reused 47 (delta 14), pack-reused 0
+remote: Compressing source files... done.
+remote: Building source:
+remote: 
+remote: -----> Building on the Heroku-20 stack
+remote: -----> Determining which buildpack to use for this app
+remote:  !     No default language could be detected for this app.
+remote:                         HINT: This occurs when Heroku cannot detect the buildpack to use for this application automatically.
+remote:                         See https://devcenter.heroku.com/articles/buildpacks
+remote:
+remote:  !     Push failed
+remote: Verifying deploy...
+remote: 
+remote: !       Push rejected to cs501-hw1-heroku.
+remote:
+To https://git.heroku.com/cs501-hw1-heroku.git
+ ! [remote rejected] HEAD -> master (pre-receive hook declined)
+error: failed to push some refs to 'https://git.heroku.com/cs501-hw1-heroku.git'
+```
+
+To understand the why, you need to understand this syntax
+
+```bash
+git push <remote> <local ref>:<remote branch>
+```
+
+
+
+
+
+
+
 Setting up a buildpack on an application (something like, telling Heroku, what language you are using, or database), more details here, https://devcenter.heroku.com/articles/buildpacks
 
 ```powershell
-(env_hw1) PS E:\Zhengqi Dong\Education\BU\2021_Fall\CS501-spark project\Flask_Project\cs501-t1-assessment> heroku buildpacks
+> heroku buildpacks
  »   Warning: heroku update available from 7.53.0 to 7.59.0.
 cs501-hw1-heroku has no Buildpack URL set.
 ```
