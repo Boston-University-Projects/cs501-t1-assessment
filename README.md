@@ -603,6 +603,19 @@ echo "web: python run.py runserver 0.0.0.0:5000" > Procfile.windows
 heroku local web -f Procfile.windows
 ```
 
+Debugging
+
+
+[Logging](https://devcenter.heroku.com/articles/logging#view-logs)
+
+
+
+```bash
+heroku logs				# Get all the recent log
+heroku logs -n 200		# last 200 line
+heroku logs --tail		# log in real-time
+```
+
 
 
 Note: How to add a buildpack for your app, more details here， https://devcenter.heroku.com/articles/python-support
