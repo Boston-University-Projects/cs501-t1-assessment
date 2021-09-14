@@ -502,21 +502,104 @@ Now you understand handling JSON objects.
 
 ## Deploy to Heroku
 
-- Download Heroku 
-
 Just check out this website, https://devcenter.heroku.com/articles/getting-started-with-python#set-up
 
-Login to Heroku
+
+
+### Regular things
 
 ```bash
-heroku login
+cd .\FlaskMarket
+
+# List your current dependency
+pip freeze > requirements.txt
+
+# create runtime.txt, with python version 3.9.7
+echo "python-3.9.7" > runtime.txt
+
+# Create a Procfile, and command to run
+echo "web: gunicorn project.manage:app" > Procfile
+echo "heroku ps:scale web=1" >> Procfile
+
+# Push to Github
+git add .
+git commit -m "Make a clean"
+git push
+
+# About heroku
+heroku login 	# Login to Heroku
+heroku create	# create a new app with default name
+heorku create cs501-hw1-heroku	# create a new app called s501-hw1-heroku
+git push heroku main	# Push to Heroku (remember to commit and push first)
+# git push heroku master	# Try this if that doesn't work
+heroku ps:scale web=1	# scale the worker/dyno to 1
 ```
 
 
 
-### Q&A
 
 
+```
+git push heroku HEAD:master
+```
+
+
+
+Solution: (There is more details about the HOW, https://stackoverflow.com/questions/26595874/i-want-make-push-and-get-error-src-refspec-master-does-not-match-any, and here is the WHY, https://stackoverflow.com/questions/8196544/what-are-the-git-concepts-of-head-master-origin/8196578#8196578)
+
+### [Changing Stack](https://devcenter.heroku.com/articles/stack#stack-support-details)
+
+
+
+```bash
+$ heroku stack
+=== ⬢ example-app Available Stacks
+  container
+  heroku-18
+* heroku-20
+$ heroku stack:set heroku-20
+```
+
+
+
+### Test locally
+```bash
+echo "web: python ./chatbot/manage.py runserver 0.0.0.0:5000" > Procfile.windows
+$ heroku local web -f Procfile.windows
+```
+
+
+
+### Scaling App
+
+
+
+### [Checking logs](https://devcenter.heroku.com/articles/logging#view-logs)
+
+```bash
+heroku logs
+heroku logs --tail
+heroku logs -n 200
+```
+
+
+
+### [Procfile](https://devcenter.heroku.com/articles/getting-started-with-python#define-a-procfile)
+
+Procfile
+
+```bash
+web: gunicorn app:app
+# The web command tells Heroku to start a web server for the application, using gunicorn. Since our application is called app.py, we've set the app name to be app as well.
+heroku ps:scale web=1
+# Start with 1 dyno/worker
+```
+
+
+
+Reference:
+
+- 
 
 ### Debug:
 
@@ -595,35 +678,6 @@ heroku open
 
 
 
-Additional Step
-
-```bash
-echo "web: python run.py runserver 0.0.0.0:5000" > Procfile.windows
-# Test locally
-heroku local web -f Procfile.windows
-```
-
-Debugging
-
-
-[Logging](https://devcenter.heroku.com/articles/logging#view-logs)
-
-
-
-```bash
-heroku logs				# Get all the recent log
-heroku logs -n 200		# last 200 line
-heroku logs --tail		# log in real-time
-```
-
-
-
-Note: How to add a buildpack for your app, more details here， https://devcenter.heroku.com/articles/python-support
-
-
-
-Solution: (There is more details about the HOW, https://stackoverflow.com/questions/26595874/i-want-make-push-and-get-error-src-refspec-master-does-not-match-any, and here is the WHY, https://stackoverflow.com/questions/8196544/what-are-the-git-concepts-of-head-master-origin/8196578#8196578)
-
 To understand the why, you need to understand this syntax
 
 ```bash
@@ -632,9 +686,7 @@ git push <remote> <local ref>:<remote branch>
 
 
 
-Check out this cheatsheet for more information about Git command, https://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf
-
-
+![image-20210912224242307](../FlaskMarket/img/image-20210912224242307.png)
 
 ## Summary:
 
@@ -646,6 +698,9 @@ heroku create cs501-hw1-heroku
 heroku ps:scale web=1	# One dyno/worker
 
 git push heroku main
+
+# If you want to deploy code to Heroku from a non-main branch of your local repository (for example, testbranch), use the following syntax to ensure it is pushed to the remote’s main/master branch (Check here for more details, https://devcenter.heroku.com/articles/git)
+git push heroku timebox5.1:master 
 ```
 
 
@@ -654,8 +709,31 @@ git push heroku main
 
 Check these two document, and read and understand all of them, 
 
+Homework, [[Github](https://github.com/BU-Spark/cs501-t1-assessment)], [Syllabus], [[Assign1](https://piazza.com/class_profile/get_resource/kskzpvu0zgm77k/kt91jisol2e2jk)]
+
+— About Flask
+
+- [Flask API](https://tedboy.github.io/flask/interface_api.incoming_request_data.html#flask.Request.get_json)
+- [Flask Quickstart](https://flask.palletsprojects.com/en/2.0.x/quickstart/#rendering-templates)
+- [Flask Login](https://flask-login.readthedocs.io/en/latest/#how-it-works)
+- [How To Process Incoming Request Data in Flask](https://www.digitalocean.com/community/tutorials/processing-incoming-request-data-in-flask)
+- [Introduction to JSON Web Tokens](https://jwt.io/introduction)
+- [Token-Based Authentication With Flask](https://realpython.com/token-based-authentication-with-flask/#getting-started)
+- Flask Course - Python Web Application Development, [[Video](https://www.youtube.com/watch?v=Qr4QMBUPxWo)] and [[Github](https://github.com/jimdevops19/FlaskSeries)], and [[Website](http://www.jimshapedcoding.com/courses/Flask%20Full%20Series)]
+- [How to create a REST API in Python using the Flask Microframework](https://medium.com/the-andela-way/how-i-developed-an-api-in-python-using-flask-4e388674f1)
+
+—About Heroku
+
 - [Getting Started on Heroku with Python](https://devcenter.heroku.com/articles/deploying-python)
 - [Deploying Python and Django Apps on Heroku](https://devcenter.heroku.com/articles/deploying-python)
+- [Deploying a Flask Application to Heroku](https://stackabuse.com/deploying-a-flask-application-to-heroku/)
+- [Deploying a Python Flask app on Heroku](https://medium.com/the-andela-way/deploying-a-python-flask-app-to-heroku-41250bda27d0)
+
+— Other things
+
+- [Git command cheatsheet](https://res.cloudinary.com/hy4kyit2a/image/upload/SF_git_cheatsheet.pdf)
+- 
+- 
 
 
 

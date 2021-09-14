@@ -73,7 +73,7 @@ def test(coverage):
 
 # ============> HW 1: Adding a new page to display all item in database
 from flask import render_template
-@app.route('/users')
+@app.route('/users/index')
 def user_page():
     items = User.query.all()
     return render_template('users.html', items=items)

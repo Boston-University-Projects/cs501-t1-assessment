@@ -1,0 +1,28 @@
+
+  51 heroku login
+  52 heroku create flask_market
+  53 heroku create flask-market
+  54 heroku create flask-market-heroku
+  55 git push heroku main
+  56 cd ..
+  57 heroku login
+  58 git clone https://github.com/heroku/python-getting-started.git
+  59 cd python-getting-started
+  60 heroku create
+  61 git push heroku main
+  62 heroku ps:scale web=1
+  63 heroku open
+  64 pip freeze > requirements.txt
+  65 cd ..
+  66 cd .\FlaskMarket
+  67 ls
+  68 pip freeze > requirements.txt
+  69 git push heroku main
+  70 heroku logs --tail
+  71 heroku local web -f Procfile.windows
+  72 heroku pg
+  73 pip install gunicorn
+  74 pip freeze > requirements.txt
+  75 git push heroku main
+  76 git push heroku main
+  77 doskey /history
