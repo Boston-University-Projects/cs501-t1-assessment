@@ -3,7 +3,7 @@ import os
 basedir = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(basedir, "diagnostic.db")
 postgres_local_base = 'sqlite:///'
-database_name = 'diagnostic'
+database_name = 'diagnostic.db'
 
 
 class BaseConfig:
@@ -18,7 +18,7 @@ class DevelopmentConfig(BaseConfig):
     """Development configuration."""
     DEBUG = True
     BCRYPT_LOG_ROUNDS = 4
-    SQLALCHEMY_DATABASE_URI = postgres_local_base + database_name
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///diagnostic.db'
 
 
 class TestingConfig(BaseConfig):
@@ -34,4 +34,4 @@ class ProductionConfig(BaseConfig):
     """Production configuration."""
     SECRET_KEY = 'diagnostic_secret'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///diagnostic'
+    SQLALCHEMY_DATABASE_URI = 'sqlite:///diagnostic.db'
