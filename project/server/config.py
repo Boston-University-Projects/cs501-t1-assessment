@@ -1,5 +1,7 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
+# basedir = os.path.abspath(os.path.dirname(__file__))
+basedir = os.path.dirname(os.path.abspath(__file__))
+db_path = os.path.join(basedir, "diagnostic.db")
 postgres_local_base = 'sqlite:///'
 database_name = 'diagnostic'
 
