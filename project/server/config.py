@@ -18,7 +18,7 @@ class DevelopmentConfig(BaseConfig):
     """Development configuration."""
     DEBUG = True
     BCRYPT_LOG_ROUNDS = 4
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///diagnostic.db'
+    SQLALCHEMY_DATABASE_URI = postgres_local_base + database_name
 
 
 class TestingConfig(BaseConfig):
@@ -34,4 +34,5 @@ class ProductionConfig(BaseConfig):
     """Production configuration."""
     SECRET_KEY = 'diagnostic_secret'
     DEBUG = False
+    # SQLALCHEMY_DATABASE_URI = 'sqlite:///diagnostic'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///diagnostic.db'
