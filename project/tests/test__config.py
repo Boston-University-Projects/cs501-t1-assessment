@@ -15,7 +15,7 @@ class TestDevelopmentConfig(TestCase):
         self.assertTrue(app.config['DEBUG'] is True)
         self.assertFalse(current_app is None)
         self.assertTrue(
-            app.config['SQLALCHEMY_DATABASE_URI'] == 'sqlite:///diagnostic'
+            app.config['SQLALCHEMY_DATABASE_URI'] == 'sqlite:///diagnostic.db'
         )
 
 
