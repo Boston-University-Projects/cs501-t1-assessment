@@ -39,6 +39,7 @@ class User(db.Model):
                 algorithm='HS256'
             )
         except Exception as e:
+            print(f"Error in encode_auth_token: {e}")
             return e
 
     @staticmethod

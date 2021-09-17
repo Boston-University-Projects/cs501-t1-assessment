@@ -1,3 +1,4 @@
+# Reference: https://realpython.com/token-based-authentication-with-flask/#jwt-setup
 import unittest
 
 from flask import current_app
